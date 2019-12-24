@@ -59,6 +59,23 @@ class Terminal implements TerminalContract
      */
     public function getTotal(): float
     {
-        // TODO: Implement getTotal() method.
+        $productsCountByType = [];
+        $totalPrice = 0;
+
+        foreach ($this->cart->getAll() as $cartItem) {
+            if (!empty($productsCountByType[$cartItem])) {
+                $productsCountByType[$cartItem]++;
+                continue;
+            }
+
+            $productsCountByType[$cartItem] = 1;
+        }
+
+        foreach ($productsCountByType as $key => $count) {
+            $priceByType = $this->priceList->getPriceByKey($key);
+            $totalPrice = $totalPrice + $priceByType->getPriceByCount($count);
+        }
+
+        return $totalPrice;
     }
 }

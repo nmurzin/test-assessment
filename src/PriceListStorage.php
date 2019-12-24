@@ -16,20 +16,12 @@ class PriceListStorage implements Storage
     private array $priceList;
 
     /**
-     * PriceListStorage constructor.
-     */
-    public function __construct()
-    {
-        $this->priceList = [];
-    }
-
-    /**
-     * @param  Price  $item
+     * @param  Price  $priceItem
      * @return Storage
      */
-    public function add($item): Storage
+    public function add($priceItem): Storage
     {
-        $this->priceList = array_merge($this->priceList, $item->getPrice());
+        $this->priceList[] = $priceItem;
 
         return $this;
     }
@@ -40,5 +32,20 @@ class PriceListStorage implements Storage
     public function getAll(): array
     {
         return $this->priceList;
+    }
+
+    /**
+     * @param $key
+     * @return Price|void
+     */
+    public function getPriceByKey($key)
+    {
+        foreach ($this->priceList as $price) {
+            if ($price->getKey() !== $key) {
+                continue;
+            }
+
+            return $price;
+        }
     }
 }
