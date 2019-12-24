@@ -78,4 +78,14 @@ class Terminal implements TerminalContract
 
         return $totalPrice;
     }
+
+    /**
+     * @return $this
+     */
+    public function clearCart()
+    {
+        $this->cart->clearCart();
+
+        return $this;
+    }
 }

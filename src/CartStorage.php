@@ -33,4 +33,14 @@ class CartStorage implements Storage
     {
         return $this->cartStorage;
     }
+
+    /**
+     * @return array
+     */
+    public function clearCart(): array
+    {
+        $this->cartStorage = [];
+
+        return $this->cartStorage;
+    }
 }
