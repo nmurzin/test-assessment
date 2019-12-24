@@ -9,14 +9,14 @@ namespace TestAssessment\Contracts;
 interface Terminal
 {
     /**
-     * @param  array  $pricing
+     * @param  Entity  $pricing
      * @return Storage
      */
-    public function setPricing(array $pricing): Storage;
+    public function setPricing(Entity $pricing): Storage;
 
     /**
      * @param  string  $item
-     * @return Storage
+     * @return Terminal
      */
     public function scanItem(string $item): Terminal;
 

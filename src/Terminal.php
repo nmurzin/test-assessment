@@ -2,6 +2,7 @@
 
 namespace TestAssessment;
 
+use TestAssessment\Contracts\Entity;
 use TestAssessment\Contracts\Storage;
 use TestAssessment\Contracts\Terminal as TerminalContract;
 
@@ -32,11 +33,13 @@ class Terminal implements TerminalContract
     }
 
     /**
-     * @param  array  $pricing
+     * @param  Entity  $pricing
      * @return Storage
      */
-    public function setPricing(array $pricing): Storage
+    public function setPricing(Entity $pricing): Storage
     {
+        $this->priceList->add($pricing);
+
         return $this->priceList;
     }
 
@@ -57,10 +60,5 @@ class Terminal implements TerminalContract
     public function getTotal(): float
     {
         // TODO: Implement getTotal() method.
-    }
-
-    public function getCartItems()
-    {
-        return $this->cart->getAll();
     }
 }
