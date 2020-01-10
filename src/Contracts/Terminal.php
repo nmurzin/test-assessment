@@ -2,17 +2,19 @@
 
 namespace TestAssessment\Contracts;
 
+use TestAssessment\Entities\Price as PriceEntity;
+
 /**
  * Interface Terminal
  * @package TestAssessment\Contracts
  */
-interface Terminal
-{
+interface Terminal {
+
     /**
-     * @param  Entity  $pricing
+     * @param  PriceEntity  $price
      * @return Storage
      */
-    public function setPricing(Entity $pricing): Storage;
+    public function setPricing(PriceEntity $price): Storage;
 
     /**
      * @param  string  $item
@@ -20,8 +22,8 @@ interface Terminal
      */
     public function scanItem(string $item): Terminal;
 
-    /**
-     * @return float
-     */
-    public function getTotal(): float;
+	/**
+	 * @return float
+	 */
+	public function getTotal(): float;
 }

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-use TestAssessment\CartStorage;
-use TestAssessment\PriceListStorage;
-use TestAssessment\Terminal;
+use TestAssessment\Storages\Cart;
+use TestAssessment\Storages\PriceList;
+use TestAssessment\ShopTerminal;
 
 require 'vendor/autoload.php';
 
-$terminal = new Terminal(new CartStorage(), new PriceListStorage());
+$terminal = new ShopTerminal(new Cart(), new PriceList());

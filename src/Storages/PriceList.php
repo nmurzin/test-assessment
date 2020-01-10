@@ -1,6 +1,6 @@
 <?php
 
-namespace TestAssessment;
+namespace TestAssessment\Storages;
 
 use TestAssessment\Contracts\Storage;
 
@@ -8,7 +8,7 @@ use TestAssessment\Contracts\Storage;
  * Class PriceListStorage
  * @package TestAssessment
  */
-class PriceListStorage implements Storage
+class PriceList implements Storage
 {
     /**
      * @var array
@@ -35,10 +35,10 @@ class PriceListStorage implements Storage
     }
 
     /**
-     * @param $key
+     * @param  string  $key
      * @return Price|void
      */
-    public function getPriceByKey($key)
+    public function getProductPrice(string $key)
     {
         foreach ($this->priceList as $price) {
             if ($price->getKey() !== $key) {

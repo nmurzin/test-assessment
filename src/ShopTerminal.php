@@ -4,13 +4,14 @@ namespace TestAssessment;
 
 use TestAssessment\Contracts\Entity;
 use TestAssessment\Contracts\Storage;
-use TestAssessment\Contracts\Terminal as TerminalContract;
+use TestAssessment\Contracts\Terminal;
+use TestAssessment\Entities\Price as PriceEntity;
 
 /**
- * Class Terminal
+ * Class ShopTerminal
  * @package TestAssessment
  */
-class Terminal implements TerminalContract
+final class ShopTerminal implements Terminal
 {
     /**
      * @var Storage
@@ -33,21 +34,21 @@ class Terminal implements TerminalContract
     }
 
     /**
-     * @param  Entity  $pricing
+     * @param  PriceEntity  $price
      * @return Storage
      */
-    public function setPricing(Entity $pricing): Storage
+    public function setPricing(PriceEntity $price): Storage
     {
-        $this->priceList->add($pricing);
+        $this->priceList->add($price);
 
         return $this->priceList;
     }
 
     /**
      * @param  string  $item
-     * @return TerminalContract
+     * @return Terminal
      */
-    public function scanItem(string $item): TerminalContract
+    public function scanItem(string $item): Terminal
     {
         $this->cart->add($item);
 
@@ -72,8 +73,8 @@ class Terminal implements TerminalContract
         }
 
         foreach ($productsCountByType as $key => $count) {
-            $priceByType = $this->priceList->getPriceByKey($key);
-            $totalPrice = $totalPrice + $priceByType->getPriceByCount($count);
+            $priceByType = $this->priceList->getProductPrice($key);
+            $totalPrice = $totalPrice + $priceByType->calculateOptimalPriceByProductCount($count);
         }
 
         return $totalPrice;
@@ -84,7 +85,7 @@ class Terminal implements TerminalContract
      */
     public function clearCart()
     {
-        $this->cart->clearCart();
+        $this->cart->clear();
 
         return $this;
     }

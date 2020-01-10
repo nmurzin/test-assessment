@@ -1,19 +1,19 @@
 <?php
 
-namespace TestAssessment;
+namespace TestAssessment\Storages;
 
 use TestAssessment\Contracts\Storage;
 
 /**
- * Class CartStorage
+ * Class Cart
  * @package TestAssessment
  */
-class CartStorage implements Storage
+class Cart implements Storage
 {
     /**
      * @var array
      */
-    private array $cartStorage;
+    private array $cartProducts;
 
     /**
      * @param  string  $item
@@ -21,7 +21,7 @@ class CartStorage implements Storage
      */
     public function add($item): Storage
     {
-        $this->cartStorage[] = $item;
+        $this->cartProducts[] = $item;
 
         return $this;
     }
@@ -31,16 +31,16 @@ class CartStorage implements Storage
      */
     public function getAll(): array
     {
-        return $this->cartStorage;
+        return $this->cartProducts;
     }
 
     /**
      * @return array
      */
-    public function clearCart(): array
+    public function clear(): array
     {
-        $this->cartStorage = [];
+        $this->cartProducts = [];
 
-        return $this->cartStorage;
+        return $this->cartProducts;
     }
 }
