@@ -2,11 +2,11 @@
 
 namespace TestAssessment\Validators;
 
+use TestAssessment\Contracts\Storage;
 use TestAssessment\Exceptions\NotValidInputException;
 
 final class PriceValidator
 {
-
     /**
      * @param $key
      * @return bool

@@ -6,6 +6,7 @@ use TestAssessment\Contracts\Entity;
 use TestAssessment\Contracts\Storage;
 use TestAssessment\Contracts\Terminal;
 use TestAssessment\Entities\Price as PriceEntity;
+use TestAssessment\Validators\CartValidator;
 
 /**
  * Class ShopTerminal
@@ -31,6 +32,8 @@ final class ShopTerminal implements Terminal
     {
         $this->cart = $cart;
         $this->priceList = $priceList;
+
+        CartValidator::$priceList = &$this->priceList;
     }
 
     /**

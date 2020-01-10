@@ -5,6 +5,7 @@ namespace TestAssessment\Storages;
 use TestAssessment\Contracts\Storage;
 use TestAssessment\Exceptions\NotValidInputException;
 use TestAssessment\Validators\PriceValidator;
+use TestAssessment\Validators\CartValidator;
 
 /**
  * Class Cart
@@ -25,6 +26,8 @@ class Cart implements Storage
     {
         try {
             PriceValidator::validateProductKey($item);
+            CartValidator::validateProductKeyExistsInPriceList($item);
+
             $this->cartProducts[] = $item;
         } catch (NotValidInputException $exception) {
             echo 'Incorrect input data: ',  $exception->getMessage(), "\n";
