@@ -2,7 +2,7 @@ ENV=local
 dir=${CURDIR}
 externalDir=/var/www
 project=test-assessment
-image=php:7-cli
+image=php:7.4-cli-alpine
 
 exec:
 	docker run -it --rm --name $(project) -v $(dir):$(externalDir) -w $(externalDir) $(image) php index.php

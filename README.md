@@ -40,6 +40,7 @@ Following test cases must be shown to work in your program:
 ### Requirements ###
 * Docker
 * Linux console
+* PHP 7.4 compatible IDE for better experience
 
 <a name="setup"></a>
 ### Project Set Up ###
