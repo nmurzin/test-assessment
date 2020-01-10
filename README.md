@@ -69,3 +69,5 @@ The `src` folder contains the main files to solve [ the given task ](#task-descr
 For the `tests`, I used the data sets that are provided in the task description. 
 I added only high-level tests, because in my implementation the logic is quite primitive and does not require specific
  unit-tests in my opinion.
+ 
+`Validators` store static rules to check user input.

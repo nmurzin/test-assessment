@@ -4,7 +4,7 @@ namespace TestAssessment\Validators;
 
 use TestAssessment\Exceptions\NotValidInputException;
 
-class PriceValidator
+final class PriceValidator
 {
 
     /**
