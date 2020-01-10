@@ -25,18 +25,16 @@ final class Price
      * Price constructor.
      * @param  string  $productKey
      * @param  array  $prices
+     *
+     * @throws NotValidInputException
      */
     public function __construct(string $productKey, array $prices)
     {
-        try {
-            PriceValidator::validateProductKey($productKey);
-            PriceValidator::validatePrices($prices);
+        PriceValidator::validateProductKey($productKey);
+        PriceValidator::validatePrices($prices);
 
-            $this->productKey = $productKey;
-            $this->prices = $prices;
-        } catch (NotValidInputException $exception) {
-            echo 'Incorrect input data: ', $exception->getMessage(), "\n";
-        }
+        $this->productKey = $productKey;
+        $this->prices = $prices;
     }
 
     /**

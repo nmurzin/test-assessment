@@ -19,19 +19,17 @@ class Cart implements Storage
     private array $cartProducts;
 
     /**
-     * @param  string  $item
+     * @param $item
      * @return Storage
+     *
+     * @throws NotValidInputException
      */
     public function add($item): Storage
     {
-        try {
-            PriceValidator::validateProductKey($item);
-            CartValidator::validateProductKeyExistsInPriceList($item);
+        PriceValidator::validateProductKey($item);
+        CartValidator::validateProductKeyExistsInPriceList($item);
 
-            $this->cartProducts[] = $item;
-        } catch (NotValidInputException $exception) {
-            echo 'Incorrect input data: ',  $exception->getMessage(), "\n";
-        }
+        $this->cartProducts[] = $item;
 
         return $this;
     }
