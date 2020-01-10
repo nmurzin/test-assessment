@@ -3,6 +3,7 @@
 namespace TestAssessment\Storages;
 
 use TestAssessment\Contracts\Storage;
+use TestAssessment\Entities\Price as PriceEntity;
 
 /**
  * Class PriceListStorage
@@ -16,7 +17,7 @@ class PriceList implements Storage
     private array $priceList;
 
     /**
-     * @param  Price  $priceItem
+     * @param  PriceEntity  $priceItem
      * @return Storage
      */
     public function add($priceItem): Storage

@@ -83,7 +83,7 @@ final class ShopTerminal implements Terminal
     /**
      * @return $this
      */
-    public function clearCart()
+    public function clearCart():Terminal
     {
         $this->cart->clear();
 

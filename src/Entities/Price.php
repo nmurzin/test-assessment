@@ -2,6 +2,9 @@
 
 namespace TestAssessment\Entities;
 
+use TestAssessment\Validators\PriceValidator;
+use TestAssessment\Exceptions\NotValidInputException;
+
 /**
  * Class Price
  * @package TestAssessment
@@ -25,8 +28,15 @@ final class Price
      */
     public function __construct(string $productKey, array $prices)
     {
-        $this->productKey = $productKey;
-        $this->prices = $prices;
+        try {
+            PriceValidator::validateProductKey($productKey);
+            PriceValidator::validatePrices($prices);
+
+            $this->productKey = $productKey;
+            $this->prices = $prices;
+        } catch (NotValidInputException $exception) {
+            echo 'Incorrect input data: ', $exception->getMessage(), "\n";
+        }
     }
 
     /**
