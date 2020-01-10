@@ -8,7 +8,8 @@ use TestAssessment\Entities\Price as PriceEntity;
  * Interface Terminal
  * @package TestAssessment\Contracts
  */
-interface Terminal {
+interface Terminal
+{
 
     /**
      * @param  PriceEntity  $price
@@ -22,8 +23,8 @@ interface Terminal {
      */
     public function scanItem(string $item): Terminal;
 
-	/**
-	 * @return float
-	 */
-	public function getTotal(): float;
+    /**
+     * @return float
+     */
+    public function getTotal(): float;
 }
