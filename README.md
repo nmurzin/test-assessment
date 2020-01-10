@@ -1,45 +1,18 @@
 ## Assessment task ##
-1. [ Task description ](#task-description)
+1. [ Library overview ](#library)
 2. [ Requirements ](#requirements)
 3. [ Project Set Up ](#setup)
 4. [ Project Overview ](#overview)
 
-<a name="task-description"></a>
-### Task description ###
-Create the following functionality in PHP OOP style without using any PHP framework. 
-Imagine a store where products have prices per unit but also volume prices. 
-E.g., bananas may be £1.00 each or 5 for £3.00.
-
-Create an API that takes products in arbitrary order (similar to a checkout line)
-and then returns the correct final price for the entire shopping basket based on the prices as applicable
-
-Please use following products: 
-```
-Code | Price 
--------------------------------------------------- 
-ZA | £2.00 each or 4 for £7.00 
-YB | £12.00 
-FC | £1.25 or £6 for a six pack
-GD | £0.15
-```
-A top level point of sale terminal service is needed that looks something like this pseudo-code: 
-```
-$terminal->setPricing(...) 
-$terminal->scanItem("ZA") $
-terminal->scanItem("FC") 
-$result = $terminal->getTotal()
-```
-
-It is up to you to design and implement the rest of the code as you wish, including how you specify the product prices. 
-Following test cases must be shown to work in your program:
-1. Scan items in this order: ZA,YB,FC,GD,ZA,YB,ZA,ZA; Verify the total price is £32.40. 
-2. Scan items in this order: FC,FC,FC,FC,FC,FC,FC; Verify the total price is £7.25. 
-3. Scan items in this order: ZA,YB,FC,GD; Verify the total price is £15.40.
+<a name="library"></a>
+### Library overview ###
+This application allows you to calculate the optimal price of products based on the specific prices for each quantity
+ of products.
 
 <a name="requirements"></a>
 ### Requirements ###
 * Docker
-* Linux console
+* UNIX console
 * PHP 7.4 compatible IDE for better experience
 
 <a name="setup"></a>
@@ -51,10 +24,10 @@ Following test cases must be shown to work in your program:
 
 You can try to break or test the system in `index.php`. To run this code enter `make exec` 
 
-<a name="setup"></a>
+<a name="overview"></a>
 ### Project Overview ###
 There is a short description of the project, its file structure and architectural solutions. 
-The `src` folder contains the main files to solve [ the given task ](#task-description):
+The `src` folder contains the main files to solve [ the given task ](#library):
 * `Contracts` folder provides us with interfaces that allow us to control integrity and some contracts in the 
     application:
     * `Terminal` is a contract for our shop "interface";
@@ -71,3 +44,8 @@ I added only high-level tests, because in my implementation the logic is quite p
  unit-tests in my opinion.
  
 `Validators` store static rules to check user input.
+
+As an improvement in this application, I would like to increase test coverage. I was also thinking about redesigning the
+ data layer, allowing it to work with any abstract storage. 
+What I also missed was using the library as a stand-alone unit. I should add the ability to connect through a composer
+ and use it in any project.

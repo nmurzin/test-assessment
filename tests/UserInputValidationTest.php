@@ -40,7 +40,7 @@ class UserInputValidationTest extends TestCase
     {
         $this->expectException(NotValidInputException::class);
 
-        $priceEntity = new PriceEntity($productKey, $productPrices);
+        new PriceEntity($productKey, $productPrices);
     }
 
     /**
